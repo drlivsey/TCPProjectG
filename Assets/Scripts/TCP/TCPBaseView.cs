@@ -9,8 +9,10 @@ public class TCPBaseView : MonoBehaviour
     [SerializeField] protected TCPClient _client;
     [SerializeField] protected UserAcess _canInteract = UserAcess.All;
     [SerializeField] protected bool _isActive = false;
+    [SerializeField] protected bool _instantiateForAll = false;
 
     public string ID  => _id;
+    public bool InstantiateForAll => _instantiateForAll;
 
     public void SetViewID(string id) => _id = id;
 
