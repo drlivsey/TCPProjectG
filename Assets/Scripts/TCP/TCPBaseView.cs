@@ -6,23 +6,14 @@ using TCPToolkit;
 public class TCPBaseView : MonoBehaviour
 {
     [SerializeField] protected string _id;
-    [SerializeField] protected TCPClient _client;
     [SerializeField] protected UserAcess _canInteract = UserAcess.All;
     [SerializeField] protected bool _isActive = false;
-    [SerializeField] protected bool _instantiateForAll = false;
 
     public string ID  => _id;
-    public bool InstantiateForAll => _instantiateForAll;
 
     public void SetViewID(string id) => _id = id;
 
-    protected virtual void Start()
-    {
-        if (!_client)
-            _client = TCPClient.Client;
-    }
-
-    public virtual void UpdateLocalData(TCPMessage message)
+    public virtual void UpdateViewLocal(TCPMessage message)
     {
         if (_canInteract == UserAcess.Nobody)
             return;
@@ -31,11 +22,11 @@ public class TCPBaseView : MonoBehaviour
             return;
     }
 
-    protected virtual void UpdateGlobalData(){ }
-    protected virtual void UpdateGlobalData(TCPMessage message)
+    protected virtual void UpdateViewGlobal() { }
+    protected virtual void UpdateViewGlobal(TCPMessage message)
     {
-        _client.SendMessageToServer(message);
+        TCPViewsRegistry.UpdateViewGlobal(message);
     }
 
-    protected virtual void KeepValue(){ }
+    protected virtual void KeepValue() { }
 }

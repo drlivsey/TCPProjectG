@@ -6,87 +6,80 @@ using SimpleTcp;
 using TMPro;
 using System.Linq;
 using System.Text;
+using UnityEngine.Events;
 using TCPToolkit;
 
 public class TCPClient : MonoBehaviour
 {
     [SerializeField] private TMP_InputField _ip;
-    [SerializeField] private List<TCPBaseView> _views;
+    [SerializeField] private string _id = string.Empty;
+    [SerializeField] private static TCPSenderType _clientType = 0;
 
-    public static TCPClient Client => null;
+    public static TCPClient Client => _unityClient;
     private static TCPClient _unityClient = null;
 
     private SimpleTcpClient _client;
-    [SerializeField] private TCPSenderType _clientType = 0;
-    private Queue<TCPMessage> _localData;
-    private Queue<TCPMessage> _serverMessages;
-    private bool _updatingNow = false;
-    [SerializeField] private string _id = string.Empty;
 
     public string ID => _id;
-    public TCPSenderType ClientType => _clientType;
-    public bool IsRoot => _clientType == TCPSenderType.RootUser;
+    public static TCPSenderType ClientType => _clientType;
+    public static bool IsRoot => _clientType == TCPSenderType.RootUser;
+    public event UnityAction<TCPMessage> onServerReceivedData;
+    public event UnityAction<TCPMessage> onUserReceivedData;
 
     private void Awake()
     {
         if (_unityClient == null) 
         { 
-            _unityClient = this; 
+            _unityClient = this;
         } 
-        else if(_unityClient == this)
-        { 
+        else
+        {
             Destroy(gameObject);
         }
 
-        _views = GameObject.FindObjectsOfType<TCPBaseView>().ToList();
         _id = GenRandomString(6);
-
-        for (var i = 0; i < _views.Count; i++)
-        {
-            _views[i].SetViewID(i.ToString());
-        }
-    }
-
-    private void Start()
-    {
         _client = new SimpleTcpClient(_ip.text);
-        _client.Events.Connected += Connected;
-        _client.Events.Disconnected += Disconnected;
-        _client.Events.DataReceived += DataReceived;
-
-        _localData = new Queue<TCPMessage>();
-        _serverMessages = new Queue<TCPMessage>();
     }
 
-    private void FixedUpdate()
+    private void OnEnable()
     {
-        if (_updatingNow)
-            return;
-        
-        UpdateViews();
-        ProcessServerMessages();
+        _client.Events.Connected += OnConnected;
+        _client.Events.Disconnected += OnDisconnected;
+        _client.Events.DataReceived += OnDataReceived;
+        onServerReceivedData += ProcessServerMessage;
     }
 
-    private void Connected(object sender, ClientConnectedEventArgs e)
+    private void OnDisable()
+    {
+        _client.Disconnect();
+
+        _client.Events.Connected -= OnConnected;
+        _client.Events.Disconnected -= OnDisconnected;
+        _client.Events.DataReceived -= OnDataReceived;
+
+        onServerReceivedData -= ProcessServerMessage;
+    }
+
+    private void OnConnected(object sender, ClientConnectedEventArgs e)
     {
         Debug.Log("CONNECTED!");
     }
 
-    private void Disconnected(object sender, ClientDisconnectedEventArgs e)
+    private void OnDisconnected(object sender, ClientDisconnectedEventArgs e)
     {
         Debug.Log($"DISCONNECTED! {e.Reason}");
     }
 
-    private void DataReceived(object sender, DataReceivedEventArgs e)
+    private void OnDataReceived(object sender, DataReceivedEventArgs e)
     {
         try 
         {
             var message = new TCPMessage(e.Data);
 
             if (message.Sender == TCPSenderType.Server)
-                _serverMessages.Enqueue(message);
+                onServerReceivedData?.Invoke(message);
             else
-                _localData.Enqueue(message);
+                onUserReceivedData?.Invoke(message);
         }
         catch (System.Exception ex)
         {
@@ -94,37 +87,14 @@ public class TCPClient : MonoBehaviour
         }
     }
 
-    private void UpdateViews()
+    private void ProcessServerMessage(TCPMessage message)
     {
-        _updatingNow = true;
-        while (_localData.Count != 0)
+        if (message.MessageType == TCPDataType.ClientRoot)
         {
-            var message = _localData.Dequeue();
-            foreach (var view in _views)
-            {
-                if (view.ID != message.ViewID)
-                    continue;
-
-                view.UpdateLocalData(message);
-                break;
-            }
-        }
-        _updatingNow = false;
-    }
-
-    private void ProcessServerMessages()
-    {
-        while (_serverMessages.Count != 0)
-        {
-            var message = _serverMessages.Dequeue();
-
-            if (message.MessageType == TCPDataType.ClientRoot)
-            {
-                if (message.Data == "root")
-                    _clientType = TCPSenderType.RootUser;
-                else
-                    _clientType = TCPSenderType.User;
-            }
+            if (message.Data == "root")
+                _clientType = TCPSenderType.RootUser;
+            else
+                _clientType = TCPSenderType.User;
         }
     }
 
@@ -159,11 +129,6 @@ public class TCPClient : MonoBehaviour
         {
             Debug.Log(e.Message);
         }
-    }
-
-    private void OnDisable()
-    {
-        _client.Disconnect();
     }
 
     private string GenRandomString(int length)

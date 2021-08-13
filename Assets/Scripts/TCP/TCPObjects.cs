@@ -153,11 +153,11 @@ namespace TCPToolkit
         // Converte this message instance to TCPObject
         public TCPObject ToTCPObject()
         {
-            switch (_type)
+            switch ((TCPDataType)_type)
             {
-                case 1:
+                case TCPDataType.Transform:
                     return new TCPTransform(this);
-                case 2:
+                case TCPDataType.Color:
                     return new TCPColor(this);
                 default:
                     return new TCPObject();

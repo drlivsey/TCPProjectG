@@ -36,7 +36,7 @@ public class TCPColorView : TCPBaseView
         if (_canInteract == UserAcess.Nobody)
             KeepValue();
         
-        if (_canInteract == UserAcess.Root && _client.ClientType != TCPSenderType.RootUser)
+        if (_canInteract == UserAcess.Root && TCPClient.IsRoot == false)
             KeepValue();
         
         _oldA = _renderer.material.color.a;
@@ -53,12 +53,12 @@ public class TCPColorView : TCPBaseView
         if (!_isChanged)
             return;
 
-        UpdateGlobalData();                  
+        UpdateViewGlobal();                  
     }
 
-    public override void UpdateLocalData(TCPMessage message)
+    public override void UpdateViewLocal(TCPMessage message)
     {
-        base.UpdateLocalData(message);
+        base.UpdateViewLocal(message);
 
         try
         {
@@ -79,13 +79,13 @@ public class TCPColorView : TCPBaseView
         }
     }
 
-    protected override void UpdateGlobalData()
+    protected override void UpdateViewGlobal()
     {
         var colorToSend = new TCPColor(_renderer.material.color);
 
-        var message = new TCPMessage(_id, TCPDataType.Color, _client.ClientType, colorToSend.ToString());
+        var message = new TCPMessage(_id, TCPDataType.Color, TCPClient.ClientType, colorToSend.ToString());
 
-        _client.SendMessageToServer(message);
+        TCPViewsRegistry.UpdateViewGlobal(message);
     }
 
     protected override void KeepValue()
