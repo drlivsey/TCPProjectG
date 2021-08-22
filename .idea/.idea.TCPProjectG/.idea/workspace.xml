@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d04ff9d2-18dd-4c50-845b-9d137ca7945b" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/WebPlayer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TcpToolkit/TcpCommandExecutor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/WebPlayerAnatomy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TcpToolkit/TcpInstanceView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TcpToolkit/TcpUnilitys.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Scripts/TCP/TCPViewsRegistry.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TCP/TCPObjectsFabric.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TCP/TCPInstance.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TCP/TCPPrefabFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TCP/TCPClient.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TCP/TCPBaseView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TCP/TCPTransformView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TCP/TCPColorView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TCP/TCPObjects.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TcpToolkit/TcpInstance.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TcpToolkit/TcpCommandExecutor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/WebPlayerAnatomy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TcpToolkit/TcpUnilitys.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TcpToolkit/TcpInstancesRegistry.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/WebPlayer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TcpToolkit/TcpInstanceView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TcpToolkit/TcpPrefabFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TcpToolkit/TcpObjects.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TcpToolkit/TcpClient.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TcpToolkit/TcpViewsRegistry.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TcpToolkit/TcpColorView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TcpToolkit/TcpTransformView.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1wgN6Ecf3WFEot552yrwcuswcg4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Build\TCPProjectG.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="G:\Projects\TCPProjectG\Build" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d04ff9d2-18dd-4c50-845b-9d137ca7945b" name="Default Changelist" comment="" />
+      <created>1628876112433</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1628876112433</updated>
+      <workItem from="1628876125495" duration="22624000" />
+      <workItem from="1628945244386" duration="23681000" />
+      <workItem from="1629622244151" duration="4401000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="638" y="76" width="644" height="888" key="find.popup" timestamp="1628878917228">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="638" y="76" width="644" height="888" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1628878917228" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1628876204274">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1628876204274" />
+  </component>
+</project>
